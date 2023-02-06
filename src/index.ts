@@ -18,15 +18,6 @@ function init(port: number) {
   });
 }
 
-sprint.router(HTTP_METHOD.GET, '/posts', (req, res) => {
-  console.log('GET /posts');
-  res.write(JSON.stringify(posts));
-});
-
-sprint.router(HTTP_METHOD.GET, '/pages', (req, res) => {
-  console.log('GET /pages');
-});
-
 sprint.init(3000);
 
 export default sprint;

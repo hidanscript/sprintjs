@@ -1,23 +1,26 @@
 import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { HTTP_METHOD } from './utils/const';
-import { initRoutes, router } from './router';
-import posts from './data/posts.json';
+import { SprintRequest } from './interfaces/request.interface';
+import { Logger } from './logger';
+import { Router } from './router';
 
-const sprint = {
-  init,
-  router: router,
+export class Sprint {
+  public static router: Router;
+  public static logger: Logger;
+
+  public static init(port: number) {
+    const server = createServer((req: IncomingMessage, res: ServerResponse) => {
+      const newReq: SprintRequest = <SprintRequest> req;
+      Router.initRoutes(newReq, res);
+    });
+
+    server.listen(port, () => {
+      Logger.info(`Server running at http://localhost:${port}/`);
+    });
+  }
 }
 
-function init(port: number) {
-  const server = createServer((req: IncomingMessage, res: ServerResponse) => {
-    initRoutes(req, res);
-  });
+Router.get('/posts', (req: SprintRequest, res: ServerResponse) => {
+  res.write('Hello World!');
+});
 
-  server.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}/`);
-  });
-}
-
-sprint.init(3000);
-
-export default sprint;
+Sprint.init(3000);

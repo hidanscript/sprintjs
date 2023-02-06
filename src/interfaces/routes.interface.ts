@@ -1,8 +1,13 @@
-import { IncomingMessage, ServerResponse } from "http";
+import { ServerResponse } from "http";
+import { SprintRequest } from "./request.interface";
 
 export interface IRoute {
   route: string;
   method: string;
-  cb: (req: IncomingMessage, res: ServerResponse) => void;
+  cb: RouteCallback;
   statusCode?: number;
+}
+
+export interface RouteCallback {
+  (req: SprintRequest, res: ServerResponse): void;
 }

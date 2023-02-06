@@ -2,6 +2,8 @@ import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { SprintRequest } from './interfaces/request.interface';
 import { Logger } from './logger';
 import { Router } from './router';
+import { Middlewares } from './middlewares';
+import { Middleware } from './interfaces/middleware.interface';
 
 export class Sprint {
   public static router: Router;
@@ -17,10 +19,8 @@ export class Sprint {
       Logger.info(`Server running at http://localhost:${port}/`);
     });
   }
+
+  public static use(middleware: Middleware) {
+    Middlewares.use(middleware);
+  }
 }
-
-Router.get('/posts', (req: SprintRequest, res: ServerResponse) => {
-  res.write('Hello World!');
-});
-
-Sprint.init(3000);

@@ -4,6 +4,7 @@ import { HTTP_METHOD, HTTP_STATUS_CODE } from '../utils/const';
 import { SprintRequest } from '../interfaces/request.interface';
 import { RouterUtils } from '../router/router.utils';
 import { Logger } from '../logger';
+import { Middlewares } from '../middlewares';
 import url from 'url';
 import querystring from 'querystring';
 
@@ -49,6 +50,7 @@ export class Router {
     });
 
     if (route) {
+      Middlewares.execMiddlewares(req, res);
       Router.execRoute(route, req, res);
     } else {
       res.statusCode = HTTP_STATUS_CODE.NOT_FOUND;

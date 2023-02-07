@@ -1,8 +1,8 @@
 import { ServerResponse } from "http";
 import { SprintRequest } from "./request.interface";
 
-export interface IRoute {
-  route: string;
+export interface Route {
+  path: string;
   method: string;
   cb: RouteCallback;
   statusCode?: number;

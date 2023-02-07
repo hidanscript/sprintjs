@@ -16,4 +16,16 @@ export class RouterUtils {
   
     return paramsObj;
   }
+
+  public static getIdFromUrl(url: string) {
+    const urlParts = url.split('/');
+    const id = urlParts[urlParts.length - 1];
+    return id;
+  }
+
+  public static checkIfURLHasId(url: string) {
+    const urlParts = url.split('/');
+    const id = urlParts[urlParts.length - 1];
+    return !isNaN(Number(id));
+  }
 }

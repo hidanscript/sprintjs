@@ -9,7 +9,7 @@ export class Middlewares {
     middlewares.push(middleware);
   }
 
-  public static execMiddlewares(req: SprintRequest, res: ServerResponse) {
+  public static exec(req: SprintRequest, res: ServerResponse) {
     middlewares.forEach((middleware) => {
       middleware(req, res);
     });

@@ -1,6 +1,6 @@
 {
-  "name": "dmarcano-sprintjs",
-  "version": "1.0.11",
+  "name": "sprintjs-core",
+  "version": "1.0.0",
   "description": "",
   "main": "./build/index.js",
   "scripts": {

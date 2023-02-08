@@ -5,7 +5,7 @@ describe("test sessions", () => {
   it("should create a new session", async () => {
     let sessionId = "";
     const sprint = Sprint;
-    sprint.use((req, res) => {
+    sprint.middlewares.use((req, res) => {
       sprint.sessions.initSession(req, res);
     });
     sprint.router.get('/', (req, res) => {
@@ -17,12 +17,12 @@ describe("test sessions", () => {
     sprint.init(8081, () => {});
     const res = await request(sprint.server).get('/');
     expect(res.text).toBe("{\"session\":{\"id\":\"" + sessionId + "\"}}");
-    sprint.server.close();
+    sprint.shutdown();
   });
 
   it("should get the same session", async () => {
     const sprint = Sprint;
-    sprint.use((req, res) => {
+    sprint.middlewares.use((req, res) => {
       sprint.sessions.initSession(req, res);
     });
     sprint.router.get('/', (req, res) => {
@@ -48,6 +48,6 @@ describe("test sessions", () => {
     const sessionId2 = resParsed2.session.id;
     
     expect(sessionId2).toBe(sessionId);
-    sprint.server.close();
+    sprint.shutdown();
   });
 });

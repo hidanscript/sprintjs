@@ -10,7 +10,7 @@ describe("test server initialization", () => {
     const address: any = sprint.server.address();
     expect(address.port).toBeTruthy();
     expect(address.port).toBe(8080);
-    sprint.server.close();
+    sprint.shutdown();
   });
 
   it("should create and get a new route called users", async () => {
@@ -25,12 +25,12 @@ describe("test server initialization", () => {
     expect(sprint.router).toBeDefined();
     const res = await request(sprint.server).get('/users');
     expect(res.text).toBe("{\"message\":\"Hello World\"}");
-    sprint.server.close();
+    sprint.shutdown();
   });
 
   it("should create and get a new route called users with a middleware", async () => {
     const sprint = Sprint;
-    sprint.use((req, res) => {
+    sprint.middlewares.use((req, res) => {
       req.body = { message: 'Hello World' };
     });
     sprint.router.get('/users', (req, res) => {
@@ -43,6 +43,6 @@ describe("test server initialization", () => {
     expect(sprint.router).toBeDefined();
     const res = await request(sprint.server).get('/users');
     expect(res.text).toBe("{\"message\":\"Hello World\"}");
-    sprint.server.close();
+    sprint.shutdown();
   });
 });

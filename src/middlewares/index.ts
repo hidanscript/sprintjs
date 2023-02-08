@@ -5,7 +5,7 @@ import { Middleware } from "../interfaces/middleware.interface";
 const middlewares: Middleware[] = [];
 
 export class Middlewares {
-  public static use(middleware: Middleware) {
+  public use(middleware: Middleware) {
     middlewares.push(middleware);
   }
 

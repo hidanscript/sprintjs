@@ -3,7 +3,6 @@ import { SprintRequest } from './interfaces/request.interface';
 import { Logger } from './logger';
 import { Router } from './router';
 import { Middlewares } from './middlewares';
-import { Middleware } from './interfaces/middleware.interface';
 import { EmptyCallback } from './interfaces/utils.interface';
 import { Sessions } from './sessions';
 
@@ -23,7 +22,16 @@ export class Sprint {
     this.server.listen(port, cb);
   }
 
-  public static use(middleware: Middleware) {
-    Middlewares.use(middleware);
+  public static shutdown(cb: EmptyCallback = () => {}) {
+    this.server.close(cb);
+  }
+
+  public static config() {
+    return {
+      logger: this.logger,
+      router: this.router,
+      middlewares: this.middlewares,
+      sessions: this.sessions,
+    };
   }
 }

@@ -1,0 +1,37 @@
+{
+  "GET": {
+    "/users": {
+      "/:id": {
+        "/addresses": {
+          "/:addressId": {
+            "GET": {
+              "description": "Get a user's address",
+              "responses": {
+                "200": {
+                  "description": "Success",
+                  "schema": {
+                    "$ref": "#/definitions/Address"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "GET": {
+        "description": "Get a list of users",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

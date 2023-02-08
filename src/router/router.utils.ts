@@ -28,4 +28,15 @@ export class RouterUtils {
     const id = urlParts[urlParts.length - 1];
     return !isNaN(Number(id));
   }
+
+  public static getUrlKeys(url: string) {
+    const urlParts = url.split('/');
+    const keys = urlParts.filter((part) => part.startsWith(':'));
+    return keys;
+  }
+
+  public static getUrlSubpathCount(url: string) {
+    const urlParts = url.split('/');
+    return urlParts.length;
+  }
 }

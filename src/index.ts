@@ -5,10 +5,13 @@ import { Router } from './router';
 import { Middlewares } from './middlewares';
 import { Middleware } from './interfaces/middleware.interface';
 import { EmptyCallback } from './interfaces/utils.interface';
+import { Sessions } from './sessions';
 
 export class Sprint {
   public static logger: Logger = new Logger();
   public static router: Router = new Router();
+  public static middlewares: Middlewares = new Middlewares();
+  public static sessions: Sessions = new Sessions();
   public static server: Server;
 
   public static init(port: number, cb: EmptyCallback) {

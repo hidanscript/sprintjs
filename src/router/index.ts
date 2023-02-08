@@ -36,8 +36,18 @@ export class Router {
     }
   }
 
+  // This is the method that is called from the server.ts file
+  // It is called for every request
+
   public initRoutes(req: SprintRequest, res: ServerResponse) {
     const { url: reqUrl, method } = req;
+
+    if (!reqUrl || !method) {
+      res.statusCode = HTTP_STATUS_CODE.BAD_REQUEST;
+      res.write(`${HTTP_STATUS_CODE.BAD_REQUEST} - Bad Request`);
+      res.end();
+      return;
+    }
 
     const parsedUrl = url.parse(reqUrl || '');
     const query = querystring.parse(parsedUrl.query || '');
@@ -45,24 +55,25 @@ export class Router {
     req.query = query;
     req.params = RouterUtils.getParamsFromQuery(parsedUrl.query || '');
 
-    const route = routes.find((routeObj) => {
-      return routeObj.path === reqUrl && routeObj.method === method;
-    });
+    const route = this.getRouteFromPathAndMethod(reqUrl, method);
 
     if (route) {
       Middlewares.exec(req, res);
       this.execRoute(route, req, res);
     } else {
       res.statusCode = HTTP_STATUS_CODE.NOT_FOUND;
+      res.write(`${HTTP_STATUS_CODE.NOT_FOUND} - Not Found`);
       res.end();
     }
   }
 
+  private getRouteFromPathAndMethod(path: string, method: string) {
+    return routes.find((route) => {
+      return route.path === path && route.method === method;
+    });
+  }
+
   private execRoute(route: Route, req: SprintRequest, res: ServerResponse) {
-    if (RouterUtils.checkIfURLHasId(route.path)) {
-      const id = RouterUtils.getIdFromUrl(route.path);
-      req.params.id = id;
-    }
     route.cb(req, res);
     res.statusCode = route.statusCode || 200;
     res.end();

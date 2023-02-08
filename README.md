@@ -1,9 +1,37 @@
 
-![Logo](https://repository-images.githubusercontent.com/598000748/a56f5f7b-63c8-4c7f-83b1-e7785497ccaf)
+![Logo](https://repository-images.githubusercontent.com/598000748/0ff311df-4420-4e17-ade6-9499f9f78c68)
 
 
-## Make your REST APIs get a sprint!
+## Make your REST APIs get a Sprint!
 
-Sprint is a test backend framework developed with Typescript using the built-in Node.js API modules, all the code in this repo may change a lot, so take a lemonade 🍋 🥃, sit down and let's see how I created my own backend ecosystem.
+Sprint is a test backend framework developed with Typescript using the built-in Node.js API modules, all the code in this repo may change a lot, so take a lemonade 🍋 🥃, sit down and let's see how I created my own backend framework.
 
 (Any similarities with express, are pure coincidence)
+## Installation
+
+Install sprint with npm
+
+```bash
+  npm install sprintjs-core
+```
+    
+## Get Started
+With Sprint, you can have your own server with custom routes running with just a few lines of code!
+```javascript
+const sprint = require('sprintjs-core');
+
+sprint.router.get('/', (req, res) => {
+  res.end('Hello world from sprint!');
+});
+
+sprint.init(3000, () => {
+  console.log(`Server is running on port 3000!`);
+});
+
+```
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+

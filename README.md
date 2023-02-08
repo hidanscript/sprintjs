@@ -18,13 +18,13 @@ Install sprint with npm
 ## Get Started
 With Sprint, you can have your own server with custom routes running with just a few lines of code!
 ```javascript
-const sprint = require('sprintjs-core');
+const { Sprint } = require('sprintjs-core');
 
-sprint.router.get('/', (req, res) => {
+Sprint.router.get('/', (req, res) => {
   res.end('Hello world from sprint!');
 });
 
-sprint.init(3000, () => {
+Sprint.init(3000, () => {
   console.log(`Server is running on port 3000!`);
 });
 

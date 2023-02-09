@@ -1,6 +1,6 @@
 
-<p align="center" style="background-color: white;">
-  <img src="https://repository-images.githubusercontent.com/598000748/5b348ff3-7308-410d-bfcd-6d69d0671bd1">
+<p align="center">
+  <img src="https://repository-images.githubusercontent.com/598000748/9fef86e4-902f-496b-8247-74cdfa5af208"">
 </p>
 
 ## Make your REST APIs get a Sprint!

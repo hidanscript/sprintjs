@@ -1,6 +1,7 @@
 
-![Logo](https://repository-images.githubusercontent.com/598000748/5b348ff3-7308-410d-bfcd-6d69d0671bd1)
-
+<p align="center" style="background-color: white;">
+  <img width="460" height="300" src="https://repository-images.githubusercontent.com/598000748/5b348ff3-7308-410d-bfcd-6d69d0671bd1">
+</p>
 
 ## Make your REST APIs get a Sprint!
 

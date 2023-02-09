@@ -1,5 +1,5 @@
 
-![Logo](https://repository-images.githubusercontent.com/598000748/0ff311df-4420-4e17-ade6-9499f9f78c68)
+![Logo](https://repository-images.githubusercontent.com/598000748/5b348ff3-7308-410d-bfcd-6d69d0671bd1)
 
 
 ## Make your REST APIs get a Sprint!

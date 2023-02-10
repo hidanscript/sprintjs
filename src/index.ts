@@ -8,8 +8,8 @@ import { Sessions } from './sessions';
 
 export class Sprint {
   public static logger: Logger = new Logger();
-  public static router: Router = new Router();
   public static middlewares: Middlewares = new Middlewares();
+  public static router: Router = new Router(this.middlewares);
   public static sessions: Sessions = new Sessions();
   public static server: Server;
 

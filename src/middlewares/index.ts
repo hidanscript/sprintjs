@@ -20,8 +20,7 @@ export class Middlewares {
 
   /**
    * Adds middleware to middlewares array.
-   * @param {Middleware} middleware
-   * @returns {void}
+   * @param function middleware
   */
 
   public use(middleware: Middleware) {
@@ -30,9 +29,8 @@ export class Middlewares {
 
   /**
    * Executes all middlewares.
-   * @param {SprintRequest} req
-   * @param {ServerResponse} res
-   * @returns {void}
+   * @param req
+   * @param res
   */
 
   public exec(req: SprintRequest, res: ServerResponse) {

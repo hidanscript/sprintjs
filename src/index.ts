@@ -17,7 +17,6 @@ export class Sprint {
    * Initializes the server on the specified port and calls the callback.
    * @param port
    * @param cb
-   * @returns {void}
   */
 
   public static init(port: number, cb: EmptyCallback) {
@@ -32,7 +31,6 @@ export class Sprint {
   /**
    * Shuts down the server.
    * @param cb
-   * @returns {void}
   */
 
   public static shutdown(cb: EmptyCallback = () => {}) {
@@ -41,7 +39,6 @@ export class Sprint {
 
   /**
    * Returns the config object.
-   * @returns {object}
   */
 
   public static config() {

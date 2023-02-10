@@ -7,7 +7,8 @@
     "test": "jest --detectOpenHandles",
     "start:dev": "npx nodemon",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js"
+    "start": "npm run build && node build/index.js",
+    "generate:docs": "typedoc --out ./docs ./src"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.23.24",
     "typescript": "^4.9.5"
   }
 }

@@ -13,6 +13,13 @@ export class Sprint {
   public static sessions: Sessions = new Sessions();
   public static server: Server;
 
+  /**
+   * Initializes the server on the specified port and calls the callback.
+   * @param port
+   * @param cb
+   * @returns {void}
+  */
+
   public static init(port: number, cb: EmptyCallback) {
     this.server = createServer((req: IncomingMessage, res: ServerResponse) => {
       const newReq: SprintRequest = <SprintRequest> req;
@@ -22,9 +29,20 @@ export class Sprint {
     this.server.listen(port, cb);
   }
 
+  /**
+   * Shuts down the server.
+   * @param cb
+   * @returns {void}
+  */
+
   public static shutdown(cb: EmptyCallback = () => {}) {
     this.server.close(cb);
   }
+
+  /**
+   * Returns the config object.
+   * @returns {object}
+  */
 
   public static config() {
     return {
